@@ -1,65 +1,101 @@
-import Image from "next/image";
+import PasswordGenerator from '@/components/PasswordGenerator'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Password Generator - Create Strong, Secure Passwords',
+  description: 'Generate strong, secure passwords instantly. Free, no-tracking password generator with customizable options for length, characters, and complexity.',
+  keywords: 'password generator, secure password generator, random password generator, strong password, password creator',
+  openGraph: {
+    title: 'Password Generator - Create Strong, Secure Passwords',
+    description: 'Generate strong, secure passwords instantly. Free, no-tracking password generator.',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <header className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Password Generator
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg text-gray-600 mb-2">
+            Create strong, secure passwords instantly
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+          <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-2 inline-block">
+            <p className="text-sm text-green-800 font-medium">
+              🔒 100% Client-Side • No Tracking • No Data Stored
+            </p>
+          </div>
+        </header>
+
+        <PasswordGenerator />
+
+        <section className="mt-16 prose prose-gray max-w-none">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Why Use a Password Generator?
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Using unique, complex passwords for each account is crucial for online security. 
+            A password generator helps you create strong passwords that are virtually impossible 
+            to guess or crack through brute force attacks.
+          </p>
+
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+            Features of Strong Passwords
+          </h3>
+          <ul className="text-gray-600 space-y-2">
+            <li>At least 12 characters long (16+ is even better)</li>
+            <li>Mix of uppercase and lowercase letters</li>
+            <li>Include numbers and special symbols</li>
+            <li>No dictionary words or personal information</li>
+            <li>Unique for each account</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+            Password Security Tips
+          </h3>
+          <ul className="text-gray-600 space-y-2">
+            <li>Never share your passwords with anyone</li>
+            <li>Use a password manager to store passwords securely</li>
+            <li>Enable two-factor authentication when available</li>
+            <li>Change passwords immediately if a service is breached</li>
+            <li>Avoid using the same password across multiple sites</li>
+          </ul>
+
+          <div className="mt-8 p-6 bg-blue-50 rounded-lg">
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              Recommended Password Managers
+            </h3>
+            <p className="text-gray-600 mb-4">
+              While our generator creates strong passwords, you'll need a secure way to store them:
+            </p>
+            <ul className="space-y-2">
+              <li>
+                <a href="https://1password.com" target="_blank" rel="noopener noreferrer" 
+                   className="text-blue-600 hover:text-blue-800 font-medium">
+                  1Password
+                </a> - Excellent for families and teams
+              </li>
+              <li>
+                <a href="https://bitwarden.com" target="_blank" rel="noopener noreferrer"
+                   className="text-blue-600 hover:text-blue-800 font-medium">
+                  Bitwarden
+                </a> - Open source and free option
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <footer className="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
+          <p>© 2026 Password Generator. All passwords are generated locally in your browser.</p>
+        </footer>
+      </div>
+    </main>
+  )
 }
