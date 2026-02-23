@@ -8,8 +8,13 @@ export default function Analytics() {
     return null;
   }
 
-  // Domain is set per tool
-  const domain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || window.location.hostname;
+  // Use environment variable for domain, fallback to empty string during build
+  const domain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || '';
+
+  // Don't render if no domain is set
+  if (!domain) {
+    return null;
+  }
 
   return (
     <Script
