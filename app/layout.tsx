@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Create Next App",
+  title: "Password Generator - Create Strong, Secure Passwords Instantly",
   description: "Generate unbreakable passwords in 1 click. Customizable length, symbols, numbers. Copy & save securely. Protect your accounts today - 100% free →",
 };
 
