@@ -1,4 +1,5 @@
 import PasswordGenerator from '@/components/PasswordGenerator'
+import RelatedTools from '@/components/RelatedTools'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -90,6 +91,10 @@ export default function Home() {
               </li>
             </ul>
           </div>
+        </section>
+
+        <section className="mt-16">
+          <RelatedTools />
         </section>
 
         <footer className="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
