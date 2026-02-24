@@ -1,6 +1,7 @@
 import PasswordGenerator from '@/components/PasswordGenerator'
 import RelatedTools from '@/components/RelatedTools'
 import Breadcrumbs from '@/components/Breadcrumbs'
+import FAQ from '@/components/FAQ'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -84,6 +85,9 @@ export default function Home() {
             when you click the button.
           </p>
         </section>
+
+        {/* FAQ Section */}
+        <FAQ />
 
         {/* Related Tools Section */}
         <RelatedTools />
