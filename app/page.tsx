@@ -1,29 +1,41 @@
+'use client'
+
+import { useEffect } from 'react'
 import PasswordGenerator from '@/components/PasswordGenerator'
 import RelatedTools from '@/components/RelatedTools'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import FAQ from '@/components/FAQ'
-import type { Metadata } from 'next'
+import { HeaderAd, FooterAd, InContentAd } from '@/components/monetization/AdSense'
 
-export const metadata: Metadata = {
-  title: 'Password Generator - Create Strong, Secure Passwords',
-  description: 'Generate strong, secure passwords instantly. Free, no-tracking password generator with customizable options for length, characters, and complexity.',
-  keywords: 'password generator, secure password generator, random password generator, strong password, password creator',
-  openGraph: {
-    title: 'Password Generator - Create Strong, Secure Passwords',
-    description: 'Generate strong, secure passwords instantly. Free, no-tracking password generator.',
-    type: 'website',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+// AdSense configuration - replace with actual values when available
+const ADSENSE_CLIENT = 'ca-pub-XXXXXXXXXXXXXXXX'
+const ADSENSE_SLOTS = {
+  header: 'XXXXXXXXXX',
+  footer: 'XXXXXXXXXX',
+  content: 'XXXXXXXXXX'
 }
 
 export default function Home() {
+  // Add AdSense script
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_CLIENT
+    script.async = true
+    script.crossOrigin = 'anonymous'
+    document.head.appendChild(script)
+
+    return () => {
+      document.head.removeChild(script)
+    }
+  }, [])
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <Breadcrumbs />
+        
+        {/* Header Ad */}
+        <HeaderAd client={ADSENSE_CLIENT} slot={ADSENSE_SLOTS.header} />
         
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -40,6 +52,9 @@ export default function Home() {
         </header>
 
         <PasswordGenerator />
+
+        {/* In-Content Ad */}
+        <InContentAd client={ADSENSE_CLIENT} slot={ADSENSE_SLOTS.content} />
 
         <section className="mt-16 prose prose-gray max-w-none">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -91,6 +106,9 @@ export default function Home() {
 
         {/* Related Tools Section */}
         <RelatedTools />
+
+        {/* Footer Ad */}
+        <FooterAd client={ADSENSE_CLIENT} slot={ADSENSE_SLOTS.footer} />
 
         <footer className="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
           <p className="mb-2">
