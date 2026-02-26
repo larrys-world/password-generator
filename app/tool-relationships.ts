@@ -1,5 +1,17 @@
 // Tool relationship mapping for inter-tool linking
-export const toolRelationships = {
+
+interface Tool {
+  name: string;
+  url: string;
+  related: string[];
+  description: string;
+}
+
+type ToolRelationships = {
+  [key: string]: Tool;
+};
+
+export const toolRelationships: ToolRelationships = {
   'tax-calculator': {
     name: 'Tax Calculator',
     url: 'https://larrys-world.github.io/tax-calculator/',
@@ -86,13 +98,15 @@ export const toolRelationships = {
   }
 };
 
-export function getRelatedTools(currentTool: string) {
+export function getRelatedTools(currentTool: string): Tool[] {
   const tool = toolRelationships[currentTool];
   if (!tool) return [];
   
-  return tool.related.map(relatedKey => toolRelationships[relatedKey]).filter(Boolean);
+  return tool.related
+    .map(relatedKey => toolRelationships[relatedKey])
+    .filter((t): t is Tool => Boolean(t));
 }
 
-export function getAllTools() {
+export function getAllTools(): Tool[] {
   return Object.values(toolRelationships);
 }

@@ -6,6 +6,12 @@ interface RelatedToolsProps {
   className?: string;
 }
 
+interface Tool {
+  name: string;
+  url: string;
+  description: string;
+}
+
 export const RelatedTools: React.FC<RelatedToolsProps> = ({ currentTool, className = '' }) => {
   const relatedTools = getRelatedTools(currentTool);
   
@@ -15,7 +21,7 @@ export const RelatedTools: React.FC<RelatedToolsProps> = ({ currentTool, classNa
     <div className={`bg-gray-50 rounded-lg p-6 ${className}`}>
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Related Tools</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {relatedTools.map((tool) => (
+        {relatedTools.map((tool: Tool) => (
           <a
             key={tool.url}
             href={tool.url}
